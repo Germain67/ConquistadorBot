@@ -4,6 +4,7 @@
   "description": "The mexican Conquistador for your Discord server",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "jshint index.js"
   },
   "repository": {
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/Germain67/ConquistadorBot#readme",
   "dependencies": {
     "discord.js": "^11.4.2",
+    "lodash": "^4.17.11",
     "require-all": "^3.0.0"
   },
   "devDependencies": {

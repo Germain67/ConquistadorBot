@@ -4,6 +4,7 @@ const { prefix, token } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+const { commands } = client;
 
 Object.keys(commandFiles).forEach((name) => {
   const command = commandFiles[name];
@@ -18,11 +19,10 @@ client.on('message', (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return false;
 
   const args = message.content.slice(prefix.length).split(/ +/);
-  const commandName = args.shift().toLowerCase();
+  const name = args.shift().toLowerCase();
 
-  const command = client.commands.find(
-    cmd => cmd.name === commandName || (cmd.aliases && cmd.aliases.includes(commandName)),
-  );
+
+  const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
   if (!command) return false;
 
