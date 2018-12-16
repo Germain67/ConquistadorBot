@@ -1,0 +1,37 @@
+{
+  "name": "conquistador-bot",
+  "version": "0.0.1",
+  "description": "The mexican Conquistador for your Discord server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jshint index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Germain67/ConquistadorBot.git"
+  },
+  "keywords": [
+    "conquistador",
+    "discord",
+    "bot"
+  ],
+  "author": "Germain CLAUSS",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Germain67/ConquistadorBot/issues"
+  },
+  "homepage": "https://github.com/Germain67/ConquistadorBot#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "lodash": "^4.17.11",
+    "require-all": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1"
+  }
+}
