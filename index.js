@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const commandFiles = require('require-all')(`${__dirname}/commands`);
+const { performance } = require('perf_hooks');
 const { prefix, token } = require('./config.json');
 
 const client = new Discord.Client();
@@ -15,8 +16,10 @@ client.once('ready', () => {
   console.log('Ready!');
 });
 
-client.on('message', (message) => {
+client.on('message', async (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return false;
+
+  console.debug(`${message.author.username}> ${message.content}`);
 
   const args = message.content.slice(prefix.length).split(/ +/);
   const name = args.shift().toLowerCase();
@@ -32,12 +35,17 @@ client.on('message', (message) => {
     return message.channel.send(`Command usage: ${prefix}${command.name} ${command.usage}`);
   }
 
+  const startTime = performance.now();
   try {
-    command.execute(message, args);
+    await command.execute(message, args);
   } catch (error) {
     console.error(error);
     message.reply('there was an error trying to execute that command!');
   }
+
+  const executionTime = Math.trunc(performance.now() - startTime);
+  console.debug(`Execution time: ${executionTime}ms`);
+
   return true;
 });
 
