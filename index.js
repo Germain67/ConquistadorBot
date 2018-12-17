@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const commandFiles = require('require-all')(`${__dirname}/commands`);
 const { performance } = require('perf_hooks');
+const logger = require('./components/logger');
 const { prefix, token } = require('./config.json');
 
 const client = new Discord.Client();
@@ -13,13 +14,13 @@ Object.keys(commandFiles).forEach((name) => {
 });
 
 client.once('ready', () => {
-  console.log('Ready!');
+  logger.info('Ready!');
 });
 
 client.on('message', async (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return false;
 
-  console.debug(`${message.author.username}> ${message.content}`);
+  logger.info(`${message.author.username}> ${message.content}`);
 
   const args = message.content.slice(prefix.length).split(/ +/);
   const name = args.shift().toLowerCase();
@@ -39,12 +40,12 @@ client.on('message', async (message) => {
   try {
     await command.execute(message, args);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     message.reply('there was an error trying to execute that command!');
   }
 
   const executionTime = Math.trunc(performance.now() - startTime);
-  console.debug(`Execution time: ${executionTime}ms`);
+  logger.debug(`Execution time: ${executionTime}ms`);
 
   return true;
 });
