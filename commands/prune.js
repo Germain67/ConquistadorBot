@@ -1,3 +1,5 @@
+const logger = require('../components/logger');
+
 module.exports = {
   name: 'prune',
   description: 'Prune up to 99 messages.',
@@ -16,7 +18,7 @@ module.exports = {
     try {
       await message.channel.bulkDelete(amount, true);
     } catch (error) {
-      console.error(error);
+      logger.error(error);
       message.channel.send('there was an error trying to prune messages in this channel!');
     }
     return true;

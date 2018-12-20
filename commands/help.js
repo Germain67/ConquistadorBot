@@ -1,5 +1,6 @@
 const _ = require('lodash');
-const { prefix } = require('../config.json');
+const logger = require('../components/logger');
+const { prefix } = require('../config');
 
 module.exports = {
   name: 'help',
@@ -19,7 +20,7 @@ module.exports = {
         await message.author.send(data, { split: true });
         message.reply('I\'ve sent you a DM with all my commands!');
       } catch (error) {
-        console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
+        logger.error(`Could not send help DM to ${message.author.tag}.\n`, error);
         message.reply('it seems like I can\'t DM you!');
       }
       return true;
