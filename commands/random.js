@@ -4,7 +4,7 @@ module.exports = {
   description: 'Random pick in a list in X roll',
   usage: '[1-3-5] [choice1] ; [choice2] ... ; ... (choiceN)',
   minArgs: 2,
-  execute(message, args) {
+  async execute(message, args) {
     const amount = parseInt(args.shift(), 10);
     const choices = args.join(' ').split(';').map(value => ({ value, count: 0 }));
 
