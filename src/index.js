@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const commandFiles = require('require-all')(`${__dirname}/commands`);
 const { performance } = require('perf_hooks');
 const logger = require('./components/logger');
-const { prefix, token } = require('./config');
+const { prefix, token } = require('../config');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();

@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const logger = require('../components/logger');
-const { prefix } = require('../config');
+const { prefix } = require('../../config');
 
 module.exports = {
   name: 'help',
