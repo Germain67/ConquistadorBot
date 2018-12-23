@@ -9,8 +9,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest tests/*.js",
-    "lint": "eslint src/*.js tests/*.js",
-    "precommit": ""
+    "lint": "eslint src/*.js tests/*.js"
   },
   "husky": {
     "hooks": {
