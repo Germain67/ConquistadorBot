@@ -1,4 +1,4 @@
-const ping = require('../commands/ping');
+const ping = require('../src/commands/ping');
 
 test('Except pong to be sent', () => {
   const callback = {
