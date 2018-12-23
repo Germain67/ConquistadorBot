@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const commandFiles = require('require-all')(`${__dirname}/commands`);
 const { performance } = require('perf_hooks');
 const logger = require('./components/logger');
-const { prefix, token } = require('../config');
+const { prefix, botToken } = require('../config');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -50,4 +50,8 @@ client.on('message', async (message) => {
   return true;
 });
 
-client.login(token);
+if (!botToken) {
+  throw new Error('Missing bot token');
+} else {
+  client.login(botToken);
+}
