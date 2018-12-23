@@ -2,12 +2,12 @@
   "name": "conquistador-bot",
   "version": "0.0.1",
   "description": "The mexican Conquistador for your Discord server",
-  "main": "index.js",
+  "main": "src/index.js",
   "jest": {
     "testEnvironment": "node"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "jest tests/*.js",
     "lint": "eslint src/*.js tests/*.js"
   },
@@ -36,7 +36,8 @@
     "discord.js": "^11.4.2",
     "lodash": "^4.17.11",
     "require-all": "^3.0.0",
-    "winston": "^3.1.0"
+    "winston": "^3.1.0",
+    "winston-logzio": "^3.0.3"
   },
   "devDependencies": {
     "coveralls": "^3.0.2",
